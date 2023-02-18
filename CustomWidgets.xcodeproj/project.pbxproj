@@ -13,12 +13,23 @@
 		3340AFA729A16AB100A851FA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3340AFA629A16AB100A851FA /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		33D9F62029A1797E00C1CDDE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33D9F61C29A1797E00C1CDDE /* CalendarApp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 33D9F60B29A1797E00C1CDDE;
+			remoteInfo = CalendarApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		3340AF9C29A16AB000A851FA /* CustomWidgets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomWidgets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3340AF9F29A16AB000A851FA /* CustomWidgetsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWidgetsApp.swift; sourceTree = "<group>"; };
 		3340AFA129A16AB000A851FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3340AFA329A16AB100A851FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3340AFA629A16AB100A851FA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		33D9F61C29A1797E00C1CDDE /* CalendarApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CalendarApp.xcodeproj; path = Modules/CalendarApp/CalendarApp.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +46,7 @@
 		3340AF9329A16AB000A851FA = {
 			isa = PBXGroup;
 			children = (
+				33D9F61C29A1797E00C1CDDE /* CalendarApp.xcodeproj */,
 				3340AF9E29A16AB000A851FA /* CustomWidgets */,
 				3340AF9D29A16AB000A851FA /* Products */,
 			);
@@ -65,6 +77,14 @@
 				3340AFA629A16AB100A851FA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		33D9F61D29A1797E00C1CDDE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				33D9F62129A1797E00C1CDDE /* CalendarApp.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -113,12 +133,28 @@
 			mainGroup = 3340AF9329A16AB000A851FA;
 			productRefGroup = 3340AF9D29A16AB000A851FA /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 33D9F61D29A1797E00C1CDDE /* Products */;
+					ProjectRef = 33D9F61C29A1797E00C1CDDE /* CalendarApp.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				3340AF9B29A16AB000A851FA /* CustomWidgets */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		33D9F62129A1797E00C1CDDE /* CalendarApp.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = CalendarApp.app;
+			remoteRef = 33D9F62029A1797E00C1CDDE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3340AF9A29A16AB000A851FA /* Resources */ = {
