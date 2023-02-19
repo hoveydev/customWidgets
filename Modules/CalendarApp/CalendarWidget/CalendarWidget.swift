@@ -42,9 +42,35 @@ struct SimpleEntry: TimelineEntry {
 
 struct CalendarWidgetEntryView : View {
     var entry: Provider.Entry
+    let calendar = Calendar.current
+    let dateFormatter = DateFormatter()
 
     var body: some View {
-        Text(entry.date, style: .time)
+        HStack {
+            // Weekday + Day
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Text(String(dateFormatter.weekdaySymbols[calendar.component(.weekday, from: entry.date) - 1]))
+                    Spacer()
+                }
+                HStack {
+                    Spacer()
+                    Text(String(calendar.dateComponents([.day], from: entry.date).day ?? 00))
+                    Spacer()
+                }
+                Spacer()
+            }
+            .frame(width: 75)
+            .padding()
+            Spacer()
+            // Month View
+            VStack {
+                Text("Calendar Here another test to see")
+            }
+            .padding()
+        }
     }
 }
 
@@ -63,6 +89,6 @@ struct CalendarWidget: Widget {
 struct CalendarWidget_Previews: PreviewProvider {
     static var previews: some View {
         CalendarWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
