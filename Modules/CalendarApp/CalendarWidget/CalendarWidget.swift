@@ -46,18 +46,37 @@ struct CalendarWidgetEntryView : View {
     let dateFormatter = DateFormatter()
 
     var body: some View {
+        // might be able to solve scroll problem with widget stack?
+        // might also be best to include 2 months instead of all
+            // my biggest issue was not being able to see far enough ahead at the end of the month
+        // this would require a slight redesign
+        
+        // NEED TO CHECK:
+        // create a large widget with multiple things:
+            // i.e. date, weather, time etc...
+        // each space could have a `Link()` i.e. deeplink
+        // which would route the user to a specific page in the app (this is possible)
+        // I would still need to check if it would be possible to create automation after landing on a specific page of the app.
+        // the automation would route users to the desired app
+        // CONCLUSION:
+        // automations will not work for specific sections of the app
+        // NEED TO CHECK:
+        // could link to apps that I create here?
         HStack {
             // Weekday + Day
             VStack {
                 Spacer()
-                HStack {
-                    Spacer()
-                    Text(String(dateFormatter.weekdaySymbols[calendar.component(.weekday, from: entry.date) - 1]))
-                    Spacer()
+                Link(destination: URL(string: "customwidgets")!) {
+                    HStack {
+                        Spacer()
+                        Text(String(dateFormatter.weekdaySymbols[calendar.component(.weekday, from: entry.date) - 1]))
+                        Spacer()
+                    }
                 }
                 HStack {
                     Spacer()
                     Text(String(calendar.dateComponents([.day], from: entry.date).day ?? 00))
+                    // maybe instead of day, we put the sunrise/sunset graphic
                     Spacer()
                 }
                 Spacer()
@@ -67,6 +86,11 @@ struct CalendarWidgetEntryView : View {
             Spacer()
             // Month View
             VStack {
+                HStack {
+                    Text(String(dateFormatter.monthSymbols[calendar.component(.month, from: entry.date) - 1]))
+                    Spacer()
+                }
+                Spacer()
                 Text("Calendar Here another test to see")
             }
             .padding()

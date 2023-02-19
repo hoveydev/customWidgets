@@ -21,6 +21,13 @@
 			remoteGlobalIDString = 33D9F60B29A1797E00C1CDDE;
 			remoteInfo = CalendarApp;
 		};
+		33D9F64229A2B2D900C1CDDE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33D9F61C29A1797E00C1CDDE /* CalendarApp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 33D9F62629A179D100C1CDDE;
+			remoteInfo = CalendarWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +37,7 @@
 		3340AFA329A16AB100A851FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3340AFA629A16AB100A851FA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		33D9F61C29A1797E00C1CDDE /* CalendarApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CalendarApp.xcodeproj; path = Modules/CalendarApp/CalendarApp.xcodeproj; sourceTree = "<group>"; };
+		33D9F64029A2B2D900C1CDDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,7 @@
 		3340AF9E29A16AB000A851FA /* CustomWidgets */ = {
 			isa = PBXGroup;
 			children = (
+				33D9F64029A2B2D900C1CDDE /* Info.plist */,
 				3340AF9F29A16AB000A851FA /* CustomWidgetsApp.swift */,
 				3340AFA129A16AB000A851FA /* ContentView.swift */,
 				3340AFA329A16AB100A851FA /* Assets.xcassets */,
@@ -83,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				33D9F62129A1797E00C1CDDE /* CalendarApp.app */,
+				33D9F64329A2B2D900C1CDDE /* CalendarWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,6 +162,13 @@
 			fileType = wrapper.application;
 			path = CalendarApp.app;
 			remoteRef = 33D9F62029A1797E00C1CDDE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		33D9F64329A2B2D900C1CDDE /* CalendarWidgetExtension.appex */ = {
+			isa = PBXReferenceProxy;
+			fileType = "wrapper.app-extension";
+			path = CalendarWidgetExtension.appex;
+			remoteRef = 33D9F64229A2B2D900C1CDDE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -306,6 +323,7 @@
 				DEVELOPMENT_TEAM = 65PP5AV236;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CustomWidgets/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -335,6 +353,7 @@
 				DEVELOPMENT_TEAM = 65PP5AV236;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CustomWidgets/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
