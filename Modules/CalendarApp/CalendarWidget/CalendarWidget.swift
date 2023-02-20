@@ -1,10 +1,3 @@
-//
-//  CalendarWidget.swift
-//  CalendarWidget
-//
-//  Created by Robert Alec Hovey on 2/18/23.
-//
-
 import WidgetKit
 import SwiftUI
 import Intents
@@ -44,6 +37,7 @@ struct CalendarWidgetEntryView : View {
     var entry: Provider.Entry
     let calendar = Calendar.current
     let dateFormatter = DateFormatter()
+    var viewModel = ViewModel()
 
     var body: some View {
         // SOLUTION:
@@ -53,44 +47,28 @@ struct CalendarWidgetEntryView : View {
         // use the pattern from `ContentView` to get an idea of what needs to happen
         VStack {
             // What will be included?
-            // 1. current month calendar
+            // 1. Month and day of week
             // 2. time w/ sunrise/set graphic
-            // 3. Month and day of week
+            HStack {
+                Text(viewModel.dayOfWeek(date: entry.date))
+                Text(viewModel.timeOfDay(date: entry.date))
+                Spacer()
+                Text("Graphic")
+            }
+            .border(Color.black)
+            Spacer()
+            // 3. current month calendar (2, w/ month ahead)
+            HStack {
+                // calendars here
+                Text("Calendars Here")
+            }
+            .border(Color.black)
         }
+        .padding()
         // use below code for date reference
-//        HStack {
-//            // Weekday + Day
-//            VStack {
-//                Spacer()
-//                Link(destination: URL(string: "customwidgets")!) {
-//                    HStack {
-//                        Spacer()
-//                        Text(String(dateFormatter.weekdaySymbols[calendar.component(.weekday, from: entry.date) - 1]))
-//                        Spacer()
-//                    }
-//                }
-//                HStack {
-//                    Spacer()
-//                    Text(String(calendar.dateComponents([.day], from: entry.date).day ?? 00))
-//                    // maybe instead of day, we put the sunrise/sunset graphic
-//                    Spacer()
-//                }
-//                Spacer()
-//            }
-//            .frame(width: 75)
-//            .padding()
-//            Spacer()
-//            // Month View
-//            VStack {
-//                HStack {
-//                    Text(String(dateFormatter.monthSymbols[calendar.component(.month, from: entry.date) - 1]))
-//                    Spacer()
-//                }
-//                Spacer()
-//                Text("Calendar Here another test to see")
-//            }
-//            .padding()
-//        }
+// Text(String(dateFormatter.weekdaySymbols[calendar.component(.weekday, from: entry.date) - 1]))
+// Text(String(calendar.dateComponents([.day], from: entry.date).day ?? 00))
+// Text(String(dateFormatter.monthSymbols[calendar.component(.month, from: entry.date) - 1]))
     }
 }
 
@@ -100,6 +78,9 @@ struct CalendarWidget: Widget {
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             CalendarWidgetEntryView(entry: entry)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color("WidgetBackground"))
+                // background color can be changed in 'Assets'
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")

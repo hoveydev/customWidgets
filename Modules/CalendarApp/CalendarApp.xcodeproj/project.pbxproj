@@ -20,6 +20,8 @@
 		33D9F63729A179D200C1CDDE /* CalendarWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 33D9F63329A179D100C1CDDE /* CalendarWidget.intentdefinition */; };
 		33D9F63829A179D200C1CDDE /* CalendarWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 33D9F63329A179D100C1CDDE /* CalendarWidget.intentdefinition */; };
 		33D9F63B29A179D200C1CDDE /* CalendarWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 33D9F62629A179D100C1CDDE /* CalendarWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		33D9F64529A3AEA100C1CDDE /* CalendarWidget+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9F64429A3AEA100C1CDDE /* CalendarWidget+ViewModel.swift */; };
+		33D9F64629A3AEA100C1CDDE /* CalendarWidget+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9F64429A3AEA100C1CDDE /* CalendarWidget+ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,7 @@
 		33D9F63329A179D100C1CDDE /* CalendarWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = CalendarWidget.intentdefinition; sourceTree = "<group>"; };
 		33D9F63429A179D200C1CDDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33D9F63629A179D200C1CDDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33D9F64429A3AEA100C1CDDE /* CalendarWidget+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarWidget+ViewModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +139,7 @@
 				33D9F62D29A179D100C1CDDE /* CalendarWidgetBundle.swift */,
 				33D9F62F29A179D100C1CDDE /* CalendarWidgetLiveActivity.swift */,
 				33D9F63129A179D100C1CDDE /* CalendarWidget.swift */,
+				33D9F64429A3AEA100C1CDDE /* CalendarWidget+ViewModel.swift */,
 				33D9F63329A179D100C1CDDE /* CalendarWidget.intentdefinition */,
 				33D9F63429A179D200C1CDDE /* Assets.xcassets */,
 				33D9F63629A179D200C1CDDE /* Info.plist */,
@@ -246,6 +250,7 @@
 			files = (
 				33D9F61129A1797E00C1CDDE /* ContentView.swift in Sources */,
 				33D9F63829A179D200C1CDDE /* CalendarWidget.intentdefinition in Sources */,
+				33D9F64529A3AEA100C1CDDE /* CalendarWidget+ViewModel.swift in Sources */,
 				33D9F60F29A1797E00C1CDDE /* CalendarAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,6 +263,7 @@
 				33D9F62E29A179D100C1CDDE /* CalendarWidgetBundle.swift in Sources */,
 				33D9F63729A179D200C1CDDE /* CalendarWidget.intentdefinition in Sources */,
 				33D9F63229A179D100C1CDDE /* CalendarWidget.swift in Sources */,
+				33D9F64629A3AEA100C1CDDE /* CalendarWidget+ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
