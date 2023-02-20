@@ -46,55 +46,51 @@ struct CalendarWidgetEntryView : View {
     let dateFormatter = DateFormatter()
 
     var body: some View {
-        // might be able to solve scroll problem with widget stack?
-        // might also be best to include 2 months instead of all
-            // my biggest issue was not being able to see far enough ahead at the end of the month
-        // this would require a slight redesign
-        
-        // NEED TO CHECK:
-        // create a large widget with multiple things:
-            // i.e. date, weather, time etc...
-        // each space could have a `Link()` i.e. deeplink
-        // which would route the user to a specific page in the app (this is possible)
-        // I would still need to check if it would be possible to create automation after landing on a specific page of the app.
-        // the automation would route users to the desired app
-        // CONCLUSION:
-        // automations will not work for specific sections of the app
-        // NEED TO CHECK:
-        // could link to apps that I create here?
-        HStack {
-            // Weekday + Day
-            VStack {
-                Spacer()
-                Link(destination: URL(string: "customwidgets")!) {
-                    HStack {
-                        Spacer()
-                        Text(String(dateFormatter.weekdaySymbols[calendar.component(.weekday, from: entry.date) - 1]))
-                        Spacer()
-                    }
-                }
-                HStack {
-                    Spacer()
-                    Text(String(calendar.dateComponents([.day], from: entry.date).day ?? 00))
-                    // maybe instead of day, we put the sunrise/sunset graphic
-                    Spacer()
-                }
-                Spacer()
-            }
-            .frame(width: 75)
-            .padding()
-            Spacer()
-            // Month View
-            VStack {
-                HStack {
-                    Text(String(dateFormatter.monthSymbols[calendar.component(.month, from: entry.date) - 1]))
-                    Spacer()
-                }
-                Spacer()
-                Text("Calendar Here another test to see")
-            }
-            .padding()
+        // SOLUTION:
+        // Large widget with mutiple links
+        // I will create deep linking to separate pages
+        // pages will corelate to apps that I redirect to
+        // use the pattern from `ContentView` to get an idea of what needs to happen
+        VStack {
+            // What will be included?
+            // 1. current month calendar
+            // 2. time w/ sunrise/set graphic
+            // 3. Month and day of week
         }
+        // use below code for date reference
+//        HStack {
+//            // Weekday + Day
+//            VStack {
+//                Spacer()
+//                Link(destination: URL(string: "customwidgets")!) {
+//                    HStack {
+//                        Spacer()
+//                        Text(String(dateFormatter.weekdaySymbols[calendar.component(.weekday, from: entry.date) - 1]))
+//                        Spacer()
+//                    }
+//                }
+//                HStack {
+//                    Spacer()
+//                    Text(String(calendar.dateComponents([.day], from: entry.date).day ?? 00))
+//                    // maybe instead of day, we put the sunrise/sunset graphic
+//                    Spacer()
+//                }
+//                Spacer()
+//            }
+//            .frame(width: 75)
+//            .padding()
+//            Spacer()
+//            // Month View
+//            VStack {
+//                HStack {
+//                    Text(String(dateFormatter.monthSymbols[calendar.component(.month, from: entry.date) - 1]))
+//                    Spacer()
+//                }
+//                Spacer()
+//                Text("Calendar Here another test to see")
+//            }
+//            .padding()
+//        }
     }
 }
 
@@ -113,6 +109,6 @@ struct CalendarWidget: Widget {
 struct CalendarWidget_Previews: PreviewProvider {
     static var previews: some View {
         CalendarWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemMedium))
+            .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }
