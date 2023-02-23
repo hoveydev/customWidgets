@@ -22,6 +22,10 @@
 		33D9F63B29A179D200C1CDDE /* CalendarWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 33D9F62629A179D100C1CDDE /* CalendarWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		33D9F64529A3AEA100C1CDDE /* CalendarWidget+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9F64429A3AEA100C1CDDE /* CalendarWidget+ViewModel.swift */; };
 		33D9F64629A3AEA100C1CDDE /* CalendarWidget+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9F64429A3AEA100C1CDDE /* CalendarWidget+ViewModel.swift */; };
+		33D9F64929A4F50000C1CDDE /* TimeChart+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9F64829A4F50000C1CDDE /* TimeChart+View.swift */; };
+		33D9F64A29A4F50000C1CDDE /* TimeChart+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9F64829A4F50000C1CDDE /* TimeChart+View.swift */; };
+		33D9F64C29A5B7E600C1CDDE /* SunsetSunriseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9F64B29A5B7E600C1CDDE /* SunsetSunriseData.swift */; };
+		33D9F64D29A5B7E600C1CDDE /* SunsetSunriseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9F64B29A5B7E600C1CDDE /* SunsetSunriseData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +68,8 @@
 		33D9F63429A179D200C1CDDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33D9F63629A179D200C1CDDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33D9F64429A3AEA100C1CDDE /* CalendarWidget+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarWidget+ViewModel.swift"; sourceTree = "<group>"; };
+		33D9F64829A4F50000C1CDDE /* TimeChart+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeChart+View.swift"; sourceTree = "<group>"; };
+		33D9F64B29A5B7E600C1CDDE /* SunsetSunriseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunsetSunriseData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,7 @@
 		33D9F62C29A179D100C1CDDE /* CalendarWidget */ = {
 			isa = PBXGroup;
 			children = (
+				33D9F64729A4F4D900C1CDDE /* TimeChart */,
 				33D9F62D29A179D100C1CDDE /* CalendarWidgetBundle.swift */,
 				33D9F62F29A179D100C1CDDE /* CalendarWidgetLiveActivity.swift */,
 				33D9F63129A179D100C1CDDE /* CalendarWidget.swift */,
@@ -145,6 +152,15 @@
 				33D9F63629A179D200C1CDDE /* Info.plist */,
 			);
 			path = CalendarWidget;
+			sourceTree = "<group>";
+		};
+		33D9F64729A4F4D900C1CDDE /* TimeChart */ = {
+			isa = PBXGroup;
+			children = (
+				33D9F64829A4F50000C1CDDE /* TimeChart+View.swift */,
+				33D9F64B29A5B7E600C1CDDE /* SunsetSunriseData.swift */,
+			);
+			path = TimeChart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,7 +267,9 @@
 				33D9F61129A1797E00C1CDDE /* ContentView.swift in Sources */,
 				33D9F63829A179D200C1CDDE /* CalendarWidget.intentdefinition in Sources */,
 				33D9F64529A3AEA100C1CDDE /* CalendarWidget+ViewModel.swift in Sources */,
+				33D9F64C29A5B7E600C1CDDE /* SunsetSunriseData.swift in Sources */,
 				33D9F60F29A1797E00C1CDDE /* CalendarAppApp.swift in Sources */,
+				33D9F64929A4F50000C1CDDE /* TimeChart+View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +279,8 @@
 			files = (
 				33D9F63029A179D100C1CDDE /* CalendarWidgetLiveActivity.swift in Sources */,
 				33D9F62E29A179D100C1CDDE /* CalendarWidgetBundle.swift in Sources */,
+				33D9F64D29A5B7E600C1CDDE /* SunsetSunriseData.swift in Sources */,
+				33D9F64A29A4F50000C1CDDE /* TimeChart+View.swift in Sources */,
 				33D9F63729A179D200C1CDDE /* CalendarWidget.intentdefinition in Sources */,
 				33D9F63229A179D100C1CDDE /* CalendarWidget.swift in Sources */,
 				33D9F64629A3AEA100C1CDDE /* CalendarWidget+ViewModel.swift in Sources */,

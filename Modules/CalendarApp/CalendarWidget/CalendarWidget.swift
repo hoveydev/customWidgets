@@ -3,40 +3,39 @@ import SwiftUI
 import Intents
 
 struct Provider: IntentTimelineProvider {
+    
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent())
+        SimpleEntry(date: Date(), configuration: ConfigurationIntent(), sunriseSunsetData: Results.init(results: SunsetSunriseData(sunrise: "", sunset: "")))
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration)
+        let entry = SimpleEntry(date: Date(), configuration: configuration, sunriseSunsetData: Results.init(results: SunsetSunriseData(sunrise: "", sunset: "")))
         completion(entry)
     }
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
+        let refreshDate = Calendar.current.date(byAdding: .minute, value: 30, to: currentDate)!
+        
+        // Make the API call to get the data
+        apiCall().getSunriseSunsetData { (data) in
+            let entry = SimpleEntry(date: currentDate, configuration: configuration, sunriseSunsetData: data)
+            let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+            completion(timeline)
         }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
     }
+
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: ConfigurationIntent
+    let sunriseSunsetData: Results
 }
 
 struct CalendarWidgetEntryView : View {
+
     var entry: Provider.Entry
-    let calendar = Calendar.current
-    let dateFormatter = DateFormatter()
     var viewModel = ViewModel()
 
     var body: some View {
@@ -53,7 +52,16 @@ struct CalendarWidgetEntryView : View {
                 Text(viewModel.dayOfWeek(date: entry.date))
                 Text(viewModel.timeOfDay(date: entry.date))
                 Spacer()
-                Text("Graphic")
+            }
+            HStack {
+                TimeChart(
+                    sunriseTime: viewModel.stringToDateObject(time: entry.sunriseSunsetData.results.sunrise),
+                    sunsetTime: viewModel.stringToDateObject(time: entry.sunriseSunsetData.results.sunset),
+                    currentTime: Date.now,
+                    startOfDay: viewModel.startOfDay(date: entry.date),
+                    endOfDay: viewModel.endOfDay(date: entry.date)
+                )
+                // ParabolicLine()
             }
             .border(Color.black)
             Spacer()
@@ -79,7 +87,7 @@ struct CalendarWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             CalendarWidgetEntryView(entry: entry)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color("WidgetBackground"))
+                // .background(Color("WidgetBackground"))
                 // background color can be changed in 'Assets'
         }
         .configurationDisplayName("My Widget")
@@ -89,7 +97,7 @@ struct CalendarWidget: Widget {
 
 struct CalendarWidget_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+        CalendarWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), sunriseSunsetData: Results(results: SunsetSunriseData(sunrise: "", sunset: ""))))
             .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }
