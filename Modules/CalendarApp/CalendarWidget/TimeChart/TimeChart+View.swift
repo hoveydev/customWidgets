@@ -45,13 +45,24 @@ struct TimeChart: View {
                 .rotationEffect(-sunsetAngle + .degrees(90))
                 .offset(x: 0, y: 50)
                 .rotationEffect(sunsetAngle)
-            Image(systemName: "sun.max")
-                .foregroundColor(.orange)
-                .offset(x: 0, y: -50)
-                .rotationEffect(angle)
+            // conditional logic here to change icon based on time relative sunset and sunrise
+            if (currentMinutes > Double(sunsetMinutes + 60) || currentMinutes < Double(sunriseMinutes - 60)) {
+                Image(systemName: "moon.stars")
+                    .foregroundColor(.gray)
+                    .rotationEffect(-angle + .degrees(90))
+                    .offset(x: 0, y: -50)
+                    .rotationEffect(angle)
+            } else {
+                Image(systemName: "sun.max")
+                    .foregroundColor(.orange)
+                    .offset(x: 0, y: -50)
+                    .rotationEffect(angle)
+            }
         }.rotationEffect(.degrees(-90))
     }
 }
+
+// I would like to eventually change the sun icon so it turns to a moon after sunset/before sunrise
 
 // this is currently just a clock
 // sunrise and sunset images would either need to be adjusted,
