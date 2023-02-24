@@ -39,11 +39,6 @@ struct CalendarWidgetEntryView : View {
     var viewModel = ViewModel()
 
     var body: some View {
-        // SOLUTION:
-        // Large widget with mutiple links
-        // I will create deep linking to separate pages
-        // pages will corelate to apps that I redirect to
-        // use the pattern from `ContentView` to get an idea of what needs to happen
         VStack {
             Spacer()
             HStack {
@@ -51,7 +46,7 @@ struct CalendarWidgetEntryView : View {
                     Text(viewModel.dayOfWeek(date: entry.date))
                         .font(.title)
                         .fontWeight(.light)
-                    Text(viewModel.timeOfDay(date: entry.date))
+                    Text(viewModel.dayOfMonth(date: entry.date))
                         .font(.largeTitle)
                     Spacer()
                 }

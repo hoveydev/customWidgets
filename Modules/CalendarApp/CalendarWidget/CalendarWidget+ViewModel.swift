@@ -6,6 +6,11 @@ class ViewModel: ObservableObject {
     let calendar = Calendar.current
     let dateFormatter = DateFormatter()
     
+    func dayOfMonth(date: Date) -> String {
+        dateFormatter.dateFormat = "dd"
+        return dateFormatter.string(from: date)
+    }
+    
     func dayOfWeek(date: Date) -> String {
         return String(dateFormatter.weekdaySymbols[calendar.component(.weekday, from: date) - 1])
     }

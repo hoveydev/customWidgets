@@ -61,11 +61,3 @@ struct TimeChart: View {
         }.rotationEffect(.degrees(-90))
     }
 }
-
-// I would like to eventually change the sun icon so it turns to a moon after sunset/before sunrise
-
-// this is currently just a clock
-// sunrise and sunset images would either need to be adjusted,
-// or we need a new method
-
-// could put a line thru???
