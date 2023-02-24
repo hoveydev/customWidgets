@@ -5,17 +5,17 @@ import Intents
 struct Provider: IntentTimelineProvider {
     
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent(), sunriseSunsetData: Results.init(results: SunsetSunriseData(sunrise: "", sunset: "")))
+        SimpleEntry(date: Date(), configuration: ConfigurationIntent(), sunriseSunsetData: Results.init(results: SunsetSunriseData(sunrise: "6:33:29 AM", sunset: "5:27:59 PM")))
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration, sunriseSunsetData: Results.init(results: SunsetSunriseData(sunrise: "", sunset: "")))
+        let entry = SimpleEntry(date: Date(), configuration: configuration, sunriseSunsetData: Results.init(results: SunsetSunriseData(sunrise: "6:33:29 AM", sunset: "5:27:59 PM")))
         completion(entry)
     }
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let currentDate = Date()
-        let refreshDate = Calendar.current.date(byAdding: .minute, value: 30, to: currentDate)!
+        let refreshDate = Calendar.current.date(byAdding: .minute, value: 1, to: currentDate)!
         
         // Make the API call to get the data
         apiCall().getSunriseSunsetData { (data) in
@@ -45,38 +45,36 @@ struct CalendarWidgetEntryView : View {
         // pages will corelate to apps that I redirect to
         // use the pattern from `ContentView` to get an idea of what needs to happen
         VStack {
-            // What will be included?
-            // 1. Month and day of week
-            // 2. time w/ sunrise/set graphic
-            HStack {
-                Text(viewModel.dayOfWeek(date: entry.date))
-                Text(viewModel.timeOfDay(date: entry.date))
-                Spacer()
-            }
-            HStack {
-                TimeChart(
-                    sunriseTime: viewModel.stringToDateObject(time: entry.sunriseSunsetData.results.sunrise),
-                    sunsetTime: viewModel.stringToDateObject(time: entry.sunriseSunsetData.results.sunset),
-                    currentTime: Date.now,
-                    startOfDay: viewModel.startOfDay(date: entry.date),
-                    endOfDay: viewModel.endOfDay(date: entry.date)
-                )
-                // ParabolicLine()
-            }
-            .border(Color.black)
             Spacer()
-            // 3. current month calendar (2, w/ month ahead)
             HStack {
-                // calendars here
-                Text("Calendars Here")
+                VStack {
+                    Text(viewModel.dayOfWeek(date: entry.date))
+                        .font(.title)
+                        .fontWeight(.light)
+                    Text(viewModel.timeOfDay(date: entry.date))
+                        .font(.largeTitle)
+                    Spacer()
+                }
+                .fixedSize(horizontal: true, vertical: false) // used to prevent the time from adjusting the position of other components
+                .padding([.trailing], 40)
+                .padding()
+                VStack {
+                    TimeChart(
+                        sunriseTime: viewModel.stringToDateObject(time: entry.sunriseSunsetData.results.sunrise),
+                        sunsetTime: viewModel.stringToDateObject(time: entry.sunriseSunsetData.results.sunset),
+                        currentTime: Date.now,
+                        startOfDay: viewModel.startOfDay(date: entry.date),
+                        endOfDay: viewModel.endOfDay(date: entry.date)
+                    )
+                    .frame(width: 70)
+                    Spacer()
+                }
+                .padding(.top, 20)
+                .padding(.trailing, 30)
             }
-            .border(Color.black)
+            Spacer()
         }
         .padding()
-        // use below code for date reference
-// Text(String(dateFormatter.weekdaySymbols[calendar.component(.weekday, from: entry.date) - 1]))
-// Text(String(calendar.dateComponents([.day], from: entry.date).day ?? 00))
-// Text(String(dateFormatter.monthSymbols[calendar.component(.month, from: entry.date) - 1]))
     }
 }
 
@@ -97,7 +95,7 @@ struct CalendarWidget: Widget {
 
 struct CalendarWidget_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), sunriseSunsetData: Results(results: SunsetSunriseData(sunrise: "", sunset: ""))))
-            .previewContext(WidgetPreviewContext(family: .systemLarge))
+        CalendarWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), sunriseSunsetData: Results(results: SunsetSunriseData(sunrise: "6:33:29 AM", sunset: "5:27:59 PM"))))
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

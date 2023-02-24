@@ -11,7 +11,9 @@ class ViewModel: ObservableObject {
     }
     
     func timeOfDay(date: Date) -> String {
-        return String(DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short))
+        // let timeAsString = String(DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short))
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.string(from: date)
     }
     
     func startOfDay(date: Date) -> Date {

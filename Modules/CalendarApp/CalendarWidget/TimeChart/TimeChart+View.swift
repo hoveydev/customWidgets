@@ -8,13 +8,23 @@ struct TimeChart: View {
     let endOfDay: Date
     
     let fullCircleWidth: CGFloat = 1
-    let TODCircleWidth: CGFloat = 5
+    let TODCircleWidth: CGFloat = 3
     
     var body: some View {
         let totalMinutes = endOfDay.timeIntervalSince(startOfDay) / 60
         let currentMinutes = currentTime.timeIntervalSince(startOfDay) / 60
         
-        let angle = Angle.degrees(360 * (currentMinutes / totalMinutes))
+        let sunriseHour = Calendar.current.component(.hour, from: sunriseTime)
+        let sunriseMinute = Calendar.current.component(.minute, from: sunriseTime)
+        let sunriseMinutes = sunriseHour * 60 + sunriseMinute
+        let sunriseAngle = Angle.degrees(360 * (Double(sunriseMinutes) / totalMinutes) - 90)
+
+        let sunsetHour = Calendar.current.component(.hour, from: sunsetTime)
+        let sunsetMinute = Calendar.current.component(.minute, from: sunsetTime)
+        let sunsetMinutes = sunsetHour * 60 + sunsetMinute
+        let sunsetAngle = Angle.degrees(360 * (Double(sunsetMinutes) / totalMinutes) + 90)
+
+        let angle = Angle.degrees(360 * (currentMinutes / totalMinutes) - 90)
         
         return ZStack {
             Circle()
@@ -23,15 +33,21 @@ struct TimeChart: View {
                 .trim(from: 0, to: CGFloat(currentMinutes / totalMinutes))
                 .stroke(Color.blue, lineWidth: TODCircleWidth)
                 .rotationEffect(.degrees(-180))
-            Image(systemName: "sunrise")
-                .rotationEffect(.degrees(90))
-                .offset(x: 0, y: -110)
-            Image(systemName: "sunset")
-                .rotationEffect(.degrees(90))
-                .offset(x: 0, y: 110)
+            Image(systemName: "circle.fill")
+                .font(.system(size: 7))
+                .foregroundColor(.blue)
+                .rotationEffect(-sunriseAngle + .degrees(90))
+                .offset(x: 0, y: -50)
+                .rotationEffect(sunriseAngle)
+            Image(systemName: "circle.fill")
+                .font(.system(size: 7))
+                .foregroundColor(.blue)
+                .rotationEffect(-sunsetAngle + .degrees(90))
+                .offset(x: 0, y: 50)
+                .rotationEffect(sunsetAngle)
             Image(systemName: "sun.max")
                 .foregroundColor(.orange)
-                .offset(x: 0, y: -110)
+                .offset(x: 0, y: -50)
                 .rotationEffect(angle)
         }.rotationEffect(.degrees(-90))
     }
